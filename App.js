@@ -1,11 +1,13 @@
 import React from "react";
-import { Text, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image, View } from "react-native";
 
 const App=()=>{
   return(
     <>
       <Text style={stylesPage.styleTitle}>Pagina Login</Text>
-      <Image style={stylesPage.styleImage} resizeMode="contain" source={require("./images/react.png")}/>
+      <View style={{marginTop:30, justifyContent:"center", flexDirection:"row"}}>
+        <Image style={stylesPage.styleImage} resizeMode="contain" source={require("./images/react.png")}/>
+      </View>
     </>
   )
 }
