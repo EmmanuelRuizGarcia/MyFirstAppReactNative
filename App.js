@@ -14,7 +14,12 @@ const stylesPage=StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     backgroundColor: "#343a40",
-    color: "white"
+    color: "white",
+    fontWeight: "bold",
+    //paddingTop: 20,
+    //paddingBottom: 20
+    //marginTop: 20,
+    paddingVertical: 20
   }
 })
 
