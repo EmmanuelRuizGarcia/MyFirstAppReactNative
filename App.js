@@ -1,13 +1,21 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 
 const App=()=>{
   return(
     <>
-      <Text>Hola Mundo...</Text>
-      <Text>Hola Mundo De Nuevo...</Text>
+      <Text style={stylesPage.styleTitle}>Pagina Login</Text>
     </>
   )
 }
+
+const stylesPage=StyleSheet.create({
+  styleTitle:{
+    fontSize: 24,
+    textAlign: "center",
+    backgroundColor: "#343a40",
+    color: "white"
+  }
+})
 
 export default App;
