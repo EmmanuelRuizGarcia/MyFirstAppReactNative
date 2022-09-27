@@ -3,7 +3,20 @@ import { Text, StyleSheet, Image, View, TextInput, ScrollView, Button, Alert } f
 
 const App=()=>{
   const ingresarDatos=()=>{
-    Alert.alert("Aviso del Sistema", "Trabajando en la funcionalidad de Ingresar");
+    Alert.alert("Aviso del Sistema", "Trabajando en la funcionalidad de Ingresar", [{text:"Aceptar"}]);
+  }
+  const registrarIngreso=()=>{
+    Alert.alert("Aviso del Sistema", 
+                "Trabajando en el resgistro", 
+                [
+                  {
+                    text:"Aceptar",
+                    onPress:()=>{Alert.alert("Aviso", "Se dio click en el boton Aceptar")}
+                  },
+                  {
+                    text:"Cancelar"
+                  }
+                ]);
   }
   return(
     <>
@@ -20,7 +33,7 @@ const App=()=>{
             <View style={{flexDirection:"row", justifyContent:"center", marginTop:20}}>
               <Button title="Ingresar" onPress={ingresarDatos} />
               <Text style={stylesPage.styleButton}></Text>
-              <Button title="Cancelar" />
+              <Button title="Registrar" onPress={registrarIngreso} />
             </View>
           </View>
         </View>
