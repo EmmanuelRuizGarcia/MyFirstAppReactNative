@@ -4,9 +4,9 @@ import { Text, StyleSheet, Image, View } from "react-native";
 const App=()=>{
   return(
     <>
-      <Text style={stylesPage.styleTitle}>Pagina Login</Text>
+      <Text style={stylesPage.styleTitle}>Login</Text>
       <View style={{marginTop:30, justifyContent:"center", flexDirection:"row"}}>
-        <Image style={stylesPage.styleImage} resizeMode="contain" source={require("./images/react.png")}/>
+        <Image style={stylesPage.styleImage} resizeMode="contain" source={require("./images/SIFO.png")}/>
       </View>
     </>
   )
@@ -14,8 +14,8 @@ const App=()=>{
 
 const stylesPage=StyleSheet.create({
   styleImage:{
-    width:200,
-    height:200
+    width:300,
+    height:300
   },
   styleTitle:{
     fontSize: 24,
