@@ -17,10 +17,10 @@ const App=()=>{
                   source={require("./images/SIFO.png")} />
           </View>
           <View>
-            <Text>Usuario:</Text>
-            <TextInput/>
-            <Text>Contraseña:</Text>
-            <TextInput/>
+            <Text style={stylesPage.styleLabelForm}>Usuario:</Text>
+            <TextInput style={stylesPage.styleInPut}/>
+            <Text style={stylesPage.styleLabelForm}>Contraseña:</Text>
+            <TextInput style={stylesPage.styleInPut}/>
           </View>
         </View>
       </ScrollView>
@@ -29,6 +29,14 @@ const App=()=>{
 }
 
 const stylesPage=StyleSheet.create({
+  styleLabelForm:{
+    marginVertical: 10
+  },
+  styleInPut:{
+    borderColor: "#343a40",
+    borderStyle: "solid",
+    borderWidth: 0.2
+  },
   styleImage:{
     width:300,
     height:300
