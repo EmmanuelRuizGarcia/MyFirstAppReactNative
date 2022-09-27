@@ -1,7 +1,10 @@
 import React from "react";
-import { Text, StyleSheet, Image, View, TextInput, ScrollView, Button } from "react-native";
+import { Text, StyleSheet, Image, View, TextInput, ScrollView, Button, Alert } from "react-native";
 
 const App=()=>{
+  const ingresarDatos=()=>{
+    Alert.alert("Aviso del Sistema", "Trabajando en la funcionalidad de Ingresar");
+  }
   return(
     <>
       <ScrollView>
@@ -11,11 +14,11 @@ const App=()=>{
           </View>
           <View>
             <Text style={stylesPage.styleLabelForm}>Usuario:</Text>
-            <TextInput style={stylesPage.styleInPut}/>
+            <TextInput style={stylesPage.styleInPut} keyboardType="default"/>
             <Text style={stylesPage.styleLabelForm}>Contraseña:</Text>
-            <TextInput style={stylesPage.styleInPut} secureTextEntry={true}/>
-            <View style={{flexDirection:"row", justifyContent:"center"}}>
-              <Button title="Ingresar" />
+            <TextInput style={stylesPage.styleInPut} secureTextEntry={true} keyboardType="default"/>
+            <View style={{flexDirection:"row", justifyContent:"center", marginTop:20}}>
+              <Button title="Ingresar" onPress={ingresarDatos} />
               <Text style={stylesPage.styleButton}></Text>
               <Button title="Cancelar" />
             </View>
