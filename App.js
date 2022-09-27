@@ -1,13 +1,29 @@
 import React from "react";
-import { Text, StyleSheet, Image, View } from "react-native";
+import { Text, StyleSheet, Image, View, TextInput, ScrollView } from "react-native";
 
 const App=()=>{
   return(
     <>
-      <Text style={stylesPage.styleTitle}>Login</Text>
-      <View style={{marginTop:30, justifyContent:"center", flexDirection:"row"}}>
-        <Image style={stylesPage.styleImage} resizeMode="contain" source={require("./images/SIFO.png")}/>
-      </View>
+      <ScrollView>
+        <Text style={stylesPage.styleTitle}>Login</Text>
+        <View style={{margin: 10}}>
+          <View 
+            style={{ 
+              marginVertical: 30, 
+              justifyContent: "center", 
+              flexDirection: "row" }}>
+            <Image style={stylesPage.styleImage} 
+                  resizeMode="contain" 
+                  source={require("./images/SIFO.png")} />
+          </View>
+          <View>
+            <Text>Usuario:</Text>
+            <TextInput/>
+            <Text>Contraseña:</Text>
+            <TextInput/>
+          </View>
+        </View>
+      </ScrollView>
     </>
   )
 }
