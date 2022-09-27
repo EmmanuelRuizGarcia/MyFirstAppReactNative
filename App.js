@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import { Text, StyleSheet, Image, View, TextInput, ScrollView, Button, Alert } from "react-native";
 
 const App=()=>{
-  const [usuario, setUsuario] = useState("")
-  const [contra, setContra] = useState("")
+  const [usuario, setUsuario] = useState("Ingresa tu usuario.")
+  const [contra, setContra] = useState("Password")
 
   const ingresarDatos=()=>{
     Alert.alert("Aviso del Sistema", "Dio Click En Ingresar El Usuario: " + usuario + " Contraseña: " + contra, [{text:"Aceptar"}]);
@@ -18,9 +18,15 @@ const App=()=>{
                     onPress:()=>{Alert.alert("Aviso", "Se dio click en el boton Aceptar")}
                   },
                   {
-                    text:"Cancelar"
+                    text:"Cancelar",
+                    onPress: limpiar
                   }
                 ]);
+  }
+
+  const limpiar=()=>{
+    setUsuario("");
+    setContra("");
   }
 
   return(
@@ -32,9 +38,9 @@ const App=()=>{
           </View>
           <View>
             <Text style={stylesPage.styleLabelForm}>Usuario:</Text>
-            <TextInput style={stylesPage.styleInPut} onChangeText={(value)=>setUsuario(value)} keyboardType="default"/>
+            <TextInput style={stylesPage.styleInPut} onChangeText={(value)=>setUsuario(value)} value={usuario} keyboardType="default"/>
             <Text style={stylesPage.styleLabelForm}>Contraseña:</Text>
-            <TextInput style={stylesPage.styleInPut} onChangeText={(value)=>setContra(value)} secureTextEntry={true} keyboardType="default"/>
+            <TextInput style={stylesPage.styleInPut} onChangeText={(value)=>setContra(value)} value={contra} secureTextEntry={true} keyboardType="default"/>
             <View style={{flexDirection:"row", justifyContent:"center", marginTop:20}}>
               <Button title="Ingresar" onPress={ingresarDatos} />
               <Text style={stylesPage.styleButton}></Text>
