@@ -12,22 +12,33 @@ const TipoLibroPage=()=>{
     return(
         <View>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
-            <FlatList 
-                keyExtractor={item=>item.IIDTIPOLIBRO}
-                data={listatipolibro}
-                renderItem={
-                    (tipolibro)=>(
-                          <View>
-                              <Text>{tipolibro.item.NOMBRETIPOLIBRO}</Text>
-                              <Text>{tipolibro.item.DESCRIPCION}</Text>
-                          </View>
-                    )
-                }/>
+            <View style={{margin: 10}}>
+                <FlatList 
+                    keyExtractor={item=>item.IIDTIPOLIBRO}
+                    data={listatipolibro}
+                    renderItem={
+                        (tipolibro)=>(
+                            <View style={stylesPage.styleContainer}>
+                                <Text style={{width: "30%"}}>{tipolibro.item.NOMBRETIPOLIBRO}</Text>
+                                <Text style={{width: "50%"}}>{tipolibro.item.DESCRIPCION}</Text>
+                            </View>
+                        )
+                    }
+                />
+            </View>
         </View>
     )
 }
 
 const stylesPage=StyleSheet.create({
+    styleContainer:{
+        flexDirection: "row",
+        paddingBottom: 10,
+        borderColor: "#343a40",
+        borderStyle: "solid",
+        borderBottomWidth: 0.4,
+        marginVertical: 10
+    },
     styleTitle:{
       fontSize: 24,
       textAlign: "center",
