@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
+import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight } from "react-native";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -13,6 +13,12 @@ const TipoLibroPage=()=>{
         <View>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
             <View style={{margin: 10}}>
+                <View style={{flexDirection: "row"}}>
+                    <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}}/>
+                    <TouchableHighlight style={stylesPage.styleButton}>
+                        <Text style={{color: "white"}}>Buscar</Text>
+                    </TouchableHighlight>
+                </View>
                 <View style={stylesPage.styleContainer}>
                     <Text style={{width: "30%", fontWeight: "bold"}}>Nombre</Text>
                     <Text style={{width: "50%", fontWeight: "bold"}}>Descripcion</Text>
@@ -35,6 +41,10 @@ const TipoLibroPage=()=>{
 }
 
 const stylesPage=StyleSheet.create({
+    styleButton:{
+        backgroundColor: "#198754",
+        paddingHorizontal: 10
+    },
     styleContainer:{
         flexDirection: "row",
         paddingBottom: 10,
