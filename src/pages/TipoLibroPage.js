@@ -13,14 +13,18 @@ const TipoLibroPage=()=>{
         <View>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
             <View style={{margin: 10}}>
+                <View style={stylesPage.styleContainer}>
+                    <Text style={{width: "30%", fontWeight: "bold"}}>Nombre</Text>
+                    <Text style={{width: "50%", fontWeight: "bold"}}>Descripcion</Text>
+                </View>
                 <FlatList 
-                    keyExtractor={item=>item.IIDTIPOLIBRO}
+                    keyExtractor={item => item.IIDTIPOLIBRO}
                     data={listatipolibro}
                     renderItem={
-                        (tipolibro)=>(
+                        ({item})=>(
                             <View style={stylesPage.styleContainer}>
-                                <Text style={{width: "30%"}}>{tipolibro.item.NOMBRETIPOLIBRO}</Text>
-                                <Text style={{width: "50%"}}>{tipolibro.item.DESCRIPCION}</Text>
+                                <Text style={{width: "30%"}}>{item.NOMBRETIPOLIBRO}</Text>
+                                <Text style={{width: "50%"}}>{item.DESCRIPCION}</Text>
                             </View>
                         )
                     }
