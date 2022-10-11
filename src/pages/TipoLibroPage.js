@@ -9,12 +9,15 @@ const TipoLibroPage=()=>{
         { IIDTIPOLIBRO:4, NOMBRETIPOLIBRO:"Ficcion", DESCRIPCION:"Es irreal" }
     ])
 
+    const [nombreBusqueda, setnombreBusqueda] = useState("");
+    const [filtradoTipoLibro, setfiltradoTipoLibro] = useState([]);
+
     return(
         <View>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
             <View style={{margin: 10}}>
                 <View style={{flexDirection: "row"}}>
-                    <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}}/>
+                    <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
                     <TouchableHighlight style={stylesPage.styleButton}>
                         <Text style={{color: "white"}}>Buscar</Text>
                     </TouchableHighlight>
@@ -43,7 +46,9 @@ const TipoLibroPage=()=>{
 const stylesPage=StyleSheet.create({
     styleButton:{
         backgroundColor: "#198754",
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        flexDirection: "column",
+        justifyContent: "center"
     },
     styleContainer:{
         flexDirection: "row",
