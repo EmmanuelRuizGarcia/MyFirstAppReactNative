@@ -30,11 +30,17 @@ const TipoLibroPage=()=>{
     return(
         <View>
             <Modal visible={visibleModal}>
-
+                <View style={{margin: 10}}>
+                    <Text 
+                        style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red"}} 
+                        onPress={()=>setvisibleModal(false)}>
+                            X
+                    </Text>
+                </View>
             </Modal>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
             <View style={{margin: 10}}>
-                <Pressable style={stylesPage.styleButtonAdd}>
+                <Pressable style={stylesPage.styleButtonAdd} onPress={()=>setvisibleModal(true)}>
                     <Text style={{color: "white"}}>Nuevo</Text>
                 </Pressable>
                 <View style={{flexDirection: "row"}}>
