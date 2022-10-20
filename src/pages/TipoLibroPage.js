@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight } from "react-native";
+import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable } from "react-native";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -11,6 +11,7 @@ const TipoLibroPage=()=>{
     
     const [nombreBusqueda, setnombreBusqueda] = useState("");
     const [filtradoTipoLibro, setfiltradoTipoLibro] = useState([]);
+    const [visibleModal, setvisibleModal] = useState(false);
 
     useEffect(()=>{
         setfiltradoTipoLibro(listatipolibro)
@@ -28,8 +29,14 @@ const TipoLibroPage=()=>{
 
     return(
         <View>
+            <Modal visible={visibleModal}>
+
+            </Modal>
             <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
             <View style={{margin: 10}}>
+                <Pressable style={stylesPage.styleButtonAdd}>
+                    <Text style={{color: "white"}}>Nuevo</Text>
+                </Pressable>
                 <View style={{flexDirection: "row"}}>
                     <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
                     <TouchableHighlight style={stylesPage.styleButton} onPress={Buscar}>
@@ -58,6 +65,13 @@ const TipoLibroPage=()=>{
 }
 
 const stylesPage=StyleSheet.create({
+    styleButtonAdd:{
+        backgroundColor: "#0b5ed7",
+        width: "25%",
+        padding: 10,
+        marginBottom : 10,
+        alignItems: "center"
+    },
     styleButton:{
         backgroundColor: "#198754",
         paddingHorizontal: 10,
