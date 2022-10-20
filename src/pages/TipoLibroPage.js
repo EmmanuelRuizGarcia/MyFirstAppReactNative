@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight } from "react-native";
 
 const TipoLibroPage=()=>{
@@ -8,9 +8,23 @@ const TipoLibroPage=()=>{
         { IIDTIPOLIBRO:3, NOMBRETIPOLIBRO:"Suspenso", DESCRIPCION:"Nos tiene con el corazón en la mano" },
         { IIDTIPOLIBRO:4, NOMBRETIPOLIBRO:"Ficcion", DESCRIPCION:"Es irreal" }
     ])
-
+    
     const [nombreBusqueda, setnombreBusqueda] = useState("");
     const [filtradoTipoLibro, setfiltradoTipoLibro] = useState([]);
+
+    useEffect(()=>{
+        setfiltradoTipoLibro(listatipolibro)
+    }, [])
+
+    const Buscar=()=>{
+        if (nombreBusqueda != "") {
+            const filtro = listatipolibro.filter(p => p.NOMBRETIPOLIBRO.includes(nombreBusqueda));
+            setfiltradoTipoLibro(filtro);
+        }
+        else{
+            setfiltradoTipoLibro(listatipolibro);
+        }
+    }
 
     return(
         <View>
@@ -18,7 +32,7 @@ const TipoLibroPage=()=>{
             <View style={{margin: 10}}>
                 <View style={{flexDirection: "row"}}>
                     <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
-                    <TouchableHighlight style={stylesPage.styleButton}>
+                    <TouchableHighlight style={stylesPage.styleButton} onPress={Buscar}>
                         <Text style={{color: "white"}}>Buscar</Text>
                     </TouchableHighlight>
                 </View>
@@ -28,7 +42,7 @@ const TipoLibroPage=()=>{
                 </View>
                 <FlatList 
                     keyExtractor={item => item.IIDTIPOLIBRO}
-                    data={listatipolibro}
+                    data={filtradoTipoLibro}
                     renderItem={
                         ({item})=>(
                             <View style={stylesPage.styleContainer}>
