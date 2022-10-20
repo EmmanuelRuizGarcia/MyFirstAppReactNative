@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable } from "react-native";
+import Titulo from "../Component/Titulo";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -38,7 +39,7 @@ const TipoLibroPage=()=>{
                     </Text>
                 </View>
             </Modal>
-            <Text style={stylesPage.styleTitle}>Tipo Libro</Text>
+            <Titulo title="Tipo Libro"/>
             <View style={{margin: 10}}>
                 <Pressable style={stylesPage.styleButtonAdd} onPress={()=>setvisibleModal(true)}>
                     <Text style={{color: "white"}}>Nuevo</Text>
