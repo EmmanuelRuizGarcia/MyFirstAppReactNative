@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable } from "react-native";
+import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable, Image } from "react-native";
 import Titulo from "../Component/Titulo";
 import Boton from "../Component/Boton";
 import FlatListCabecera from "../Component/FlatListCabecera";
@@ -57,6 +57,10 @@ const TipoLibroPage=()=>{
                             <View style={stylesPage.styleContainer}>
                                 <Text style={{width: "30%"}}>{item.NOMBRETIPOLIBRO}</Text>
                                 <Text style={{width: "50%"}}>{item.DESCRIPCION}</Text>
+                                <View style={{flexDirection:"row", width: "20%"}}>
+                                    <Image source={require("../../iconos/eliminar.png")} />
+                                    <Image style={{marginTop: 2}} source={require("../../iconos/editar.png")} />
+                                </View>
                             </View>
                         )
                     }
