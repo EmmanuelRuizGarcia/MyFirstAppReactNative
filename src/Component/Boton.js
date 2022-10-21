@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
-const Boton=({onPress, title, backgroundColor})=>{
+const Boton=({onPress, title, backgroundColor, marginBottom=0})=>{
     return(
-        <TouchableHighlight style={[stylesPage.styleButton,{backgroundColor:backgroundColor}]} onPress={onPress}>
+        <TouchableHighlight style={[stylesPage.styleButton,{backgroundColor, marginBottom}]} onPress={onPress}>
             <Text style={{color: "white"}}>{title}</Text>
         </TouchableHighlight>
     )

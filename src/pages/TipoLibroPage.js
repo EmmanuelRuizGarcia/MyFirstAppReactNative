@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable } from "react-native";
 import Titulo from "../Component/Titulo";
 import Boton from "../Component/Boton";
+import FlatListCabecera from "../Component/FlatListCabecera";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -42,17 +43,12 @@ const TipoLibroPage=()=>{
             </Modal>
             <Titulo title="Tipo Libro"/>
             <View style={{margin: 10}}>
-                <Pressable style={stylesPage.styleButtonAdd} onPress={()=>setvisibleModal(true)}>
-                    <Text style={{color: "white"}}>Nuevo</Text>
-                </Pressable>
+                <Boton title="Nuevo" onPress={()=>setvisibleModal(true)} backgroundColor="#0b5ed7" marginBottom={10} />
                 <View style={{flexDirection: "row"}}>
                     <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
                     <Boton title="Buscar" onPress={Buscar} backgroundColor="#198754" />
                 </View>
-                <View style={stylesPage.styleContainer}>
-                    <Text style={{width: "30%", fontWeight: "bold"}}>Nombre</Text>
-                    <Text style={{width: "50%", fontWeight: "bold"}}>Descripcion</Text>
-                </View>
+                <FlatListCabecera  cabeceras={["Nombre","Descripcion"]} />
                 <FlatList 
                     keyExtractor={item => item.IIDTIPOLIBRO}
                     data={filtradoTipoLibro}
@@ -71,13 +67,6 @@ const TipoLibroPage=()=>{
 }
 
 const stylesPage=StyleSheet.create({
-    styleButtonAdd:{
-        backgroundColor: "#0b5ed7",
-        width: "25%",
-        padding: 10,
-        marginBottom : 10,
-        alignItems: "center"
-    },
     styleContainer:{
         flexDirection: "row",
         paddingBottom: 10,
