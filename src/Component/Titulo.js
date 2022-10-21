@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 
-const Titulo=({title})=>{
+const Titulo=({title, flex=0})=>{
     return(
-        <Text style={stylesPage.styleTitle}>{title}</Text>
+        <Text style={[stylesPage.styleTitle,{flex}]}>{title}</Text>
     )
 }
 
