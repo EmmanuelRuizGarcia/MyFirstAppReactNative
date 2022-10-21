@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable } from "react-native";
 import Titulo from "../Component/Titulo";
+import Boton from "../Component/Boton";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -46,9 +47,7 @@ const TipoLibroPage=()=>{
                 </Pressable>
                 <View style={{flexDirection: "row"}}>
                     <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
-                    <TouchableHighlight style={stylesPage.styleButton} onPress={Buscar}>
-                        <Text style={{color: "white"}}>Buscar</Text>
-                    </TouchableHighlight>
+                    <Boton title="Buscar" onPress={Buscar} backgroundColor="#198754" />
                 </View>
                 <View style={stylesPage.styleContainer}>
                     <Text style={{width: "30%", fontWeight: "bold"}}>Nombre</Text>
@@ -79,12 +78,6 @@ const stylesPage=StyleSheet.create({
         marginBottom : 10,
         alignItems: "center"
     },
-    styleButton:{
-        backgroundColor: "#198754",
-        paddingHorizontal: 10,
-        flexDirection: "column",
-        justifyContent: "center"
-    },
     styleContainer:{
         flexDirection: "row",
         paddingBottom: 10,
@@ -92,14 +85,6 @@ const stylesPage=StyleSheet.create({
         borderStyle: "solid",
         borderBottomWidth: 0.4,
         marginVertical: 10
-    },
-    styleTitle:{
-      fontSize: 24,
-      textAlign: "center",
-      backgroundColor: "#343a40",
-      color: "white",
-      fontWeight: "bold",
-      paddingVertical: 20
     }
   })
 

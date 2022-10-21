@@ -15,7 +15,7 @@ const stylesPage = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         paddingVertical: 20
-      }
+    }
 })
 
 export default Titulo;
