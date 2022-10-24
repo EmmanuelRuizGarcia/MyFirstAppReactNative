@@ -14,7 +14,7 @@ const stylesPage = StyleSheet.create({
         backgroundColor: "#343a40",
         color: "white",
         fontWeight: "bold",
-        paddingVertical: 20
+        paddingVertical: 5
     }
 })
 

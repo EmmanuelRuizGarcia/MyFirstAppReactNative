@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal,
 import Titulo from "../Component/Titulo";
 import Boton from "../Component/Boton";
 import FlatListCabecera from "../Component/FlatListCabecera";
+import Input from "../Component/Input";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -16,6 +17,8 @@ const TipoLibroPage=()=>{
     const [filtradoTipoLibro, setfiltradoTipoLibro] = useState([]);
     const [visibleModal, setvisibleModal] = useState(false);
     const [tituloPopup, settituloPopup] = useState("");
+    const [nombreTipoLibro, setnombreTipoLibro] = useState("");
+    const [descripcionTipoLibro, setdescripcionTipoLibro] = useState("");
 
     useEffect(()=>{
         setfiltradoTipoLibro(listatipolibro)
@@ -44,22 +47,28 @@ const TipoLibroPage=()=>{
     return(
         <View>
             <Modal visible={visibleModal}>
-                <View style={{margin: 10, flexDirection: "row"}}>
-                    <Titulo title={tituloPopup} flex={1}/>
-                    <View>
-                        <Text 
-                            style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red", marginLeft: 10}} 
-                            onPress={()=>setvisibleModal(false)}>
-                                X
-                        </Text>
+                <View style={{margin: 10}}>
+                    <View style={{flexDirection: "row"}}>
+                        <Titulo title={tituloPopup} flex={1}/>
+                        <View>
+                            <Text 
+                                style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red", marginLeft: 10}} 
+                                onPress={()=>setvisibleModal(false)}>
+                                    X
+                            </Text>
+                        </View>
                     </View>
+                    <Text>Nombre tipo libro:</Text>
+                    <Input placeholder="Ingrese nombre tipo libro..." />
+                    <Text>Descripcion tipo libro:</Text>
+                    <Input placeholder="Ingrese descripcion tipo libro..." />
                 </View>
             </Modal>
             <Titulo title="Tipo Libro"/>
             <View style={{margin: 10}}>
                 <Boton title="Nuevo" onPress={()=>Nuevo()} backgroundColor="#0b5ed7" marginBottom={10} />
                 <View style={{flexDirection: "row"}}>
-                    <TextInput placeholder="Ingrese Nombre..." style={{borderWidth:0.2, borderColor: "#343a40", flex: 1}} onChangeText={(value)=>{setnombreBusqueda(value)}} value={nombreBusqueda} />
+                    <Input placeholder="Ingrese nombre" flex={1} onChangeText={value => setnombreBusqueda(value)} value={nombreBusqueda} />
                     <Boton title="Buscar" onPress={Buscar} backgroundColor="#198754" />
                 </View>
                 <FlatListCabecera  cabeceras={["Nombre","Descripcion"]} />
@@ -72,10 +81,10 @@ const TipoLibroPage=()=>{
                                 <Text style={{width: "30%"}}>{item.NOMBRETIPOLIBRO}</Text>
                                 <Text style={{width: "50%"}}>{item.DESCRIPCION}</Text>
                                 <View style={{flexDirection:"row", width: "20%"}}>
-                                    <Image source={require("../../iconos/eliminar.png")} />
-                                    <Pressable onPress={()=>recuperar(item)}>
+                                <Pressable onPress={()=>recuperar(item)}>
                                         <Image style={{marginTop: 2}} source={require("../../iconos/editar.png")} />
                                     </Pressable>
+                                    <Image source={require("../../iconos/eliminar.png")} />
                                 </View>
                             </View>
                         )
