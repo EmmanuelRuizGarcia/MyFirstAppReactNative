@@ -53,7 +53,7 @@ const TipoLibroPage=()=>{
         setdescripcionTipoLibro("");
     }
 
-    const Eliminar=(obj)=>{
+    const eliminar=(obj)=>{
         Alert.alert("Confirmacion", "Desea eliminar el tipo libro " + obj.NOMBRETIPOLIBRO, [{text: "Si"}, {text: "No"}])
     }
 
@@ -86,7 +86,7 @@ const TipoLibroPage=()=>{
                     <Boton title="Buscar" onPress={Buscar} backgroundColor="#198754" />
                 </View>
                 <FlatListCabecera  cabeceras={["Nombre","Descripcion"]} />
-                <FlatListView data={filtradoTipoLibro} propiedadID="IIDTIPOLIBRO" propiedadColumn1="NOMBRETIPOLIBRO" propiedadColumn2="DESCRIPCION" />
+                <FlatListView data={filtradoTipoLibro} propiedadID="IIDTIPOLIBRO" propiedadColumn1="NOMBRETIPOLIBRO" propiedadColumn2="DESCRIPCION" onPressRecuperar={recuperar} onPressEliminar={eliminar} />
             </View>
         </View>
     )

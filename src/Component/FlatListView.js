@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, View, Text, Pressable, Image, StyleSheet } from "react-native";
 
-const FlatListView=({data, propiedadID, propiedadColumn1, propiedadColumn2})=>{
+const FlatListView=({data, propiedadID, propiedadColumn1, propiedadColumn2, onPressRecuperar, onPressEliminar})=>{
     return(
         <FlatList 
             keyExtractor={item => item[propiedadID]}
@@ -12,10 +12,10 @@ const FlatListView=({data, propiedadID, propiedadColumn1, propiedadColumn2})=>{
                         <Text style={{width: "30%"}}>{item[propiedadColumn1]}</Text>
                         <Text style={{width: "50%"}}>{item[propiedadColumn2]}</Text>
                         <View style={{flexDirection:"row", width: "20%"}}>
-                            <Pressable onPress={()=>recuperar(item)}>
+                            <Pressable onPress={()=>onPressRecuperar(item)}>
                                 <Image style={{marginTop: 2}} source={require("../../iconos/editar.png")} />
                             </Pressable>
-                            <Pressable onPress={()=>Eliminar(item)}>
+                            <Pressable onPress={()=>onPressEliminar(item)}>
                                 <Image source={require("../../iconos/eliminar.png")} />
                             </Pressable>
                         </View>
