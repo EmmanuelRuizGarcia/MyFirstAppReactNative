@@ -37,11 +37,19 @@ const TipoLibroPage=()=>{
     const recuperar=(obj)=>{
         setvisibleModal(true);
         settituloPopup("Editar Tipo Libro");
+        setnombreTipoLibro(obj.NOMBRETIPOLIBRO);
+        setdescripcionTipoLibro(obj.DESCRIPCION);
     }
 
     const Nuevo=()=>{
         setvisibleModal(true);
         settituloPopup("Agregar Tipo Libro");
+        Limpiar();
+    }
+
+    const Limpiar=()=>{
+        setnombreTipoLibro("");
+        setdescripcionTipoLibro("");
     }
 
     return(
@@ -51,17 +59,17 @@ const TipoLibroPage=()=>{
                     <View style={{flexDirection: "row"}}>
                         <Titulo title={tituloPopup} flex={1}/>
                         <View>
-                            <Text 
-                                style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red", marginLeft: 10}} 
-                                onPress={()=>setvisibleModal(false)}>
-                                    X
-                            </Text>
+                            <Text style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red", marginLeft: 10}} onPress={()=>setvisibleModal(false)}>X</Text>
                         </View>
                     </View>
                     <Text>Nombre tipo libro:</Text>
-                    <Input placeholder="Ingrese nombre tipo libro..." />
+                    <Input value={nombreTipoLibro} onChangeText={(value)=>setnombreTipoLibro(value)} placeholder="Ingrese nombre tipo libro..." />
                     <Text>Descripcion tipo libro:</Text>
-                    <Input placeholder="Ingrese descripcion tipo libro..." />
+                    <Input value={descripcionTipoLibro} onChangeText={(value)=>setdescripcionTipoLibro(value)} placeholder="Ingrese descripcion tipo libro..." />
+                    <View style={{flexDirection: "row"}}>
+                        <Boton title="Guardar" backgroundColor="green" />
+                        <Boton title="Cancelar" backgroundColor="red" />
+                    </View>
                 </View>
             </Modal>
             <Titulo title="Tipo Libro"/>
