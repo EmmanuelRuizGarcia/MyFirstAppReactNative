@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable, Image } from "react-native";
+import { View, StyleSheet, Text, FlatList, TextInput, TouchableHighlight, Modal, Pressable, Image, Alert } from "react-native";
 import Titulo from "../Component/Titulo";
 import Boton from "../Component/Boton";
 import FlatListCabecera from "../Component/FlatListCabecera";
@@ -52,6 +52,10 @@ const TipoLibroPage=()=>{
         setdescripcionTipoLibro("");
     }
 
+    const Eliminar=(obj)=>{
+        Alert.alert("Confirmacion", "Desea eliminar el tipo libro " + obj.NOMBRETIPOLIBRO, [{text: "Si"}, {text: "No"}])
+    }
+
     return(
         <View>
             <Modal visible={visibleModal}>
@@ -66,9 +70,10 @@ const TipoLibroPage=()=>{
                     <Input value={nombreTipoLibro} onChangeText={(value)=>setnombreTipoLibro(value)} placeholder="Ingrese nombre tipo libro..." />
                     <Text>Descripcion tipo libro:</Text>
                     <Input value={descripcionTipoLibro} onChangeText={(value)=>setdescripcionTipoLibro(value)} placeholder="Ingrese descripcion tipo libro..." />
-                    <View style={{flexDirection: "row"}}>
-                        <Boton title="Guardar" backgroundColor="green" />
-                        <Boton title="Cancelar" backgroundColor="red" />
+                    <View style={{flexDirection: "row", marginTop: 10, justifyContent: "center"}}>
+                        <Boton title="Guardar" backgroundColor="#146c43" />
+                        <Text style={{marginRight: 5}}></Text>
+                        <Boton title="Cancelar" onPress={()=>setvisibleModal(false)} backgroundColor="#dc3545" />
                     </View>
                 </View>
             </Modal>
@@ -89,10 +94,12 @@ const TipoLibroPage=()=>{
                                 <Text style={{width: "30%"}}>{item.NOMBRETIPOLIBRO}</Text>
                                 <Text style={{width: "50%"}}>{item.DESCRIPCION}</Text>
                                 <View style={{flexDirection:"row", width: "20%"}}>
-                                <Pressable onPress={()=>recuperar(item)}>
+                                    <Pressable onPress={()=>recuperar(item)}>
                                         <Image style={{marginTop: 2}} source={require("../../iconos/editar.png")} />
                                     </Pressable>
-                                    <Image source={require("../../iconos/eliminar.png")} />
+                                    <Pressable onPress={()=>Eliminar(item)}>
+                                        <Image source={require("../../iconos/eliminar.png")} />
+                                    </Pressable>
                                 </View>
                             </View>
                         )
