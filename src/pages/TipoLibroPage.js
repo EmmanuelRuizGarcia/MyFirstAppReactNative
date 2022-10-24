@@ -5,6 +5,7 @@ import Boton from "../Component/Boton";
 import FlatListCabecera from "../Component/FlatListCabecera";
 import Input from "../Component/Input";
 import FlatListView from "../Component/FlatListView";
+import ModalPopup from "../Component/ModalPopup";
 
 const TipoLibroPage=()=>{
     const[listatipolibro,setlistatipolibro] = useState([
@@ -53,40 +54,65 @@ const TipoLibroPage=()=>{
         setdescripcionTipoLibro("");
     }
 
+    const Cerrar=()=>{
+        setvisibleModal(false);
+    }
+    const Guardar=()=>{
+
+    }
+
     const eliminar=(obj)=>{
         Alert.alert("Confirmacion", "Desea eliminar el tipo libro " + obj.NOMBRETIPOLIBRO, [{text: "Si"}, {text: "No"}])
     }
 
     return(
         <View>
-            <Modal visible={visibleModal}>
-                <View style={{margin: 10}}>
-                    <View style={{flexDirection: "row"}}>
-                        <Titulo title={tituloPopup} flex={1}/>
-                        <View>
-                            <Text style={{fontSize: 24, fontWeight: "bold", textAlign: "right", color: "red", marginLeft: 10}} onPress={()=>setvisibleModal(false)}>X</Text>
-                        </View>
-                    </View>
-                    <Text>Nombre tipo libro:</Text>
-                    <Input value={nombreTipoLibro} onChangeText={(value)=>setnombreTipoLibro(value)} placeholder="Ingrese nombre tipo libro..." />
-                    <Text>Descripcion tipo libro:</Text>
-                    <Input value={descripcionTipoLibro} onChangeText={(value)=>setdescripcionTipoLibro(value)} placeholder="Ingrese descripcion tipo libro..." />
-                    <View style={{flexDirection: "row", marginTop: 10, justifyContent: "center"}}>
-                        <Boton title="Guardar" backgroundColor="#146c43" />
-                        <Text style={{marginRight: 5}}></Text>
-                        <Boton title="Cancelar" onPress={()=>setvisibleModal(false)} backgroundColor="#dc3545" />
-                    </View>
-                </View>
-            </Modal>
+            <ModalPopup 
+                visible={visibleModal}
+                title={tituloPopup}
+                onPressCerrar={Cerrar}
+                onPressGuardar={Guardar} >
+                <Text>Nombre tipo libro:</Text>
+                <Input 
+                    value={nombreTipoLibro} 
+                    onChangeText={(value)=>setnombreTipoLibro(value)} 
+                    placeholder="Ingrese nombre tipo libro..." />
+                <Text>Descripcion tipo libro:</Text>
+                <Input 
+                    value={descripcionTipoLibro} 
+                    onChangeText={(value)=>setdescripcionTipoLibro(value)} 
+                    placeholder="Ingrese descripcion tipo libro..." />
+            </ModalPopup>
             <Titulo title="Tipo Libro"/>
             <View style={{margin: 10}}>
-                <Boton title="Nuevo" onPress={()=>Nuevo()} backgroundColor="#0b5ed7" marginBottom={10} />
+                <Boton 
+                    title="Nuevo" 
+                    onPress={()=>Nuevo()} 
+                    backgroundColor="#0b5ed7" 
+                    marginBottom={10} />
+                
                 <View style={{flexDirection: "row"}}>
-                    <Input placeholder="Ingrese nombre" flex={1} onChangeText={value => setnombreBusqueda(value)} value={nombreBusqueda} />
-                    <Boton title="Buscar" onPress={Buscar} backgroundColor="#198754" />
+                    <Input 
+                        placeholder="Ingrese nombre" 
+                        flex={1} 
+                        onChangeText={value => setnombreBusqueda(value)} 
+                        value={nombreBusqueda} />
+                    
+                    <Boton 
+                        title="Buscar" 
+                        onPress={Buscar} 
+                        backgroundColor="#198754" />
                 </View>
+                
                 <FlatListCabecera  cabeceras={["Nombre","Descripcion"]} />
-                <FlatListView data={filtradoTipoLibro} propiedadID="IIDTIPOLIBRO" propiedadColumn1="NOMBRETIPOLIBRO" propiedadColumn2="DESCRIPCION" onPressRecuperar={recuperar} onPressEliminar={eliminar} />
+                
+                <FlatListView 
+                    data={filtradoTipoLibro} 
+                    propiedadID="IIDTIPOLIBRO" 
+                    propiedadColumn1="NOMBRETIPOLIBRO" 
+                    propiedadColumn2="DESCRIPCION" 
+                    onPressRecuperar={recuperar} 
+                    onPressEliminar={eliminar} />
             </View>
         </View>
     )

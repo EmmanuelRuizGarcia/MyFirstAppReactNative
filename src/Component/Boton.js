@@ -11,7 +11,7 @@ const Boton=({onPress, title, backgroundColor, marginBottom=0})=>{
 
 const stylesPage = StyleSheet.create({
     styleButton:{
-        backgroundColor: "#0b5ed7",
+        //backgroundColor: "#0b5ed7",
         width: "25%",
         padding: 10,
         //marginBottom : 10,
