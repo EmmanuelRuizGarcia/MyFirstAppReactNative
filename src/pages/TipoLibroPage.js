@@ -57,6 +57,7 @@ const TipoLibroPage=()=>{
     const Cerrar=()=>{
         setvisibleModal(false);
     }
+    
     const Guardar=()=>{
 
     }
