@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { View } from "react-native";
 import FlatListView from "../Component/FlatListView";
+import Input from "../Component/Input";
 import Titulo from "../Component/Titulo";
 
 const AutorPage=()=>{
@@ -14,15 +15,27 @@ const AutorPage=()=>{
         ]
     )
     const [filtroautor, setfiltroautor] = useState([])
+    const [nombreBusqueda, setnombreBusqueda] = useState("")
 
     useEffect(()=>{
         setfiltroautor(listaautor)
     },[])
 
+    useEffect(()=>{
+        if(nombreBusqueda==""){
+            setfiltroautor(listaautor);
+        }
+        else{
+            const filtro = listaautor.filter(p=>p.NOMBRECOMPLETO.includes(nombreBusqueda));
+            setfiltroautor(filtro);
+        }
+    },[nombreBusqueda])
+
     return(
         <View>
             <Titulo title="Autor" />
             <View style={{margin: 10}}>
+                <Input placeholder="Ingrese nombre autor..." value={nombreBusqueda} onChangeText={(value)=>setnombreBusqueda(value)} />
                 <FlatListView 
                     data={filtroautor}
                     propiedadID="IIDAUTOR"
