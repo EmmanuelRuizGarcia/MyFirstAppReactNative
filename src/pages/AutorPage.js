@@ -17,6 +17,15 @@ const AutorPage=()=>{
         ]
     )
 
+    const [listaPais, setlistaPais] = useState(
+        [
+            {IIDPAIS:1,NOMBREPAIS:"Argentina"},
+            {IIDPAIS:2,NOMBREPAIS:"Colombia"},
+            {IIDPAIS:3,NOMBREPAIS:"España"},
+            {IIDPAIS:4,NOMBREPAIS:"Peru"},
+            {IIDPAIS:5,NOMBREPAIS:"Mexico"}
+        ]
+    );
     const [filtroautor, setfiltroautor] = useState([]);
     const [nombreBusqueda, setnombreBusqueda] = useState("");
     const [visibleModal, setvisibleModal] = useState(false);
