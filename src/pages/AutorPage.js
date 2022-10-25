@@ -6,6 +6,7 @@ import Input from "../Component/Input";
 import ModalPopup from "../Component/ModalPopup";
 import Titulo from "../Component/Titulo";
 import Boton from "../Component/Boton";
+import Picker from "../Component/Picker";
 
 const AutorPage=()=>{
     const [listaautor, setlistaautor] = useState(
@@ -75,22 +76,22 @@ const AutorPage=()=>{
                 visible={visibleModal}
                 onPressCerrar={Cerrar} >
                 <Input text="Nombre" />
+
                 <Input text="Apellido Paterno" />
+                
                 <Input text="Apellido Materno" />
-                <Select
-                    selectedValue={iidPais} 
-                    onValueChange={(value)=>setiidPais(value)} >
-                    {
-                        listaPais.map((obj)=>(
-                            <Select.Item 
-                                label={obj.NOMBREPAIS} 
-                                value={obj.IIDPAIS} 
-                                key={obj.IIDPAIS} />
-                        ))
-                    }
-                </Select>
+                
+                <Picker 
+                    data = {listaPais} 
+                    value = {iidPais}
+                    onChangeText = {(value)=>setiidPais(value)}
+                    propiedadID = "IIDPAIS"
+                    propiedadMostrar = "NOMBREPAIS"
+                    text="Seleccione pais" />
             </ModalPopup>
+
             <Titulo title="Autor" />
+            
             <View style={{margin: 10}}>
                 <Boton 
                     title="Nuevo" 
