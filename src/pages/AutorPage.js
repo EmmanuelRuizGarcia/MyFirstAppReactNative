@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { View } from "react-native";
+import { Select } from "native-base";
 import FlatListView from "../Component/FlatListView";
 import Input from "../Component/Input";
 import ModalPopup from "../Component/ModalPopup";
@@ -15,8 +16,7 @@ const AutorPage=()=>{
             {IIDAUTOR:4,NOMBRECOMPLETO:"Mario Vargas Llosa",NOMBREPAIS:"Peru"},
             {IIDAUTOR:5,NOMBRECOMPLETO:"Cristina Rivera Garza",NOMBREPAIS:"Mexico"}
         ]
-    )
-
+    );
     const [listaPais, setlistaPais] = useState(
         [
             {IIDPAIS:1,NOMBREPAIS:"Argentina"},
@@ -30,6 +30,7 @@ const AutorPage=()=>{
     const [nombreBusqueda, setnombreBusqueda] = useState("");
     const [visibleModal, setvisibleModal] = useState(false);
     const [tituloPopup, settituloPopup] = useState("");
+    const [iidPais, setiidPais] = useState("");
 
     useEffect(()=>{
         setfiltroautor(listaautor)
@@ -76,6 +77,18 @@ const AutorPage=()=>{
                 <Input text="Nombre" />
                 <Input text="Apellido Paterno" />
                 <Input text="Apellido Materno" />
+                <Select
+                    selectedValue={iidPais} 
+                    onValueChange={(value)=>setiidPais(value)} >
+                    {
+                        listaPais.map((obj)=>(
+                            <Select.Item 
+                                label={obj.NOMBREPAIS} 
+                                value={obj.IIDPAIS} 
+                                key={obj.IIDPAIS} />
+                        ))
+                    }
+                </Select>
             </ModalPopup>
             <Titulo title="Autor" />
             <View style={{margin: 10}}>
