@@ -1,9 +1,19 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, View, Text } from "react-native";
 
-const Input = ({placeholder, onChangeText, value, flex = 0}) => {
+const Input = ({placeholder, onChangeText, value, flex = 0, text=""}) => {
     return(
-        <TextInput placeholder={placeholder} onChangeText={onChangeText} value={value} style={[stylesPage.styleInput,{flex}]}  />
+        <>
+            {
+                (text=="") ? null : <Text style={{marginVertical: 10}}>{text}</Text>
+            }
+            
+            <TextInput 
+                placeholder={placeholder} 
+                onChangeText={onChangeText} 
+                value={value} 
+                style={[stylesPage.styleInput,{flex}]}  />
+        </>
     )
 }
 

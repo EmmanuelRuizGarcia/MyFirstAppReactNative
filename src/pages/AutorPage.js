@@ -64,6 +64,9 @@ const AutorPage=()=>{
                 title={tituloPopup}
                 visible={visibleModal}
                 onPressCerrar={Cerrar} >
+                <Input text="Nombre" />
+                <Input text="Apellido Paterno" />
+                <Input text="Apellido Materno" />
             </ModalPopup>
             <Titulo title="Autor" />
             <View style={{margin: 10}}>
@@ -73,7 +76,10 @@ const AutorPage=()=>{
                     backgroundColor="#0b5ed7" 
                     marginBottom={10} />
 
-                <Input placeholder="Ingrese nombre autor..." value={nombreBusqueda} onChangeText={(value)=>setnombreBusqueda(value)} />
+                <Input 
+                    placeholder="Ingrese nombre autor..." 
+                    value={nombreBusqueda} 
+                    onChangeText={(value)=>setnombreBusqueda(value)} />
                 
                 <FlatListView 
                     data={filtroautor}
