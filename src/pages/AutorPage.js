@@ -11,28 +11,35 @@ import Picker from "../Component/Picker";
 const AutorPage=()=>{
     const [listaautor, setlistaautor] = useState(
         [
-            {IIDAUTOR:1,NOMBRECOMPLETO:"Jose Luis Borges",NOMBREPAIS:"Argentina"},
-            {IIDAUTOR:2,NOMBRECOMPLETO:"Gabriel Garcia Marquez",NOMBREPAIS:"Colombia"},
-            {IIDAUTOR:3,NOMBRECOMPLETO:"Miguel de Servantes Saavedra",NOMBREPAIS:"España"},
-            {IIDAUTOR:4,NOMBRECOMPLETO:"Mario Vargas Llosa",NOMBREPAIS:"Peru"},
-            {IIDAUTOR:5,NOMBRECOMPLETO:"Cristina Rivera Garza",NOMBREPAIS:"Mexico"}
+            {IIDAUTOR:1, NOMBRECOMPLETO:"Jose Luis Borges", NOMBREPAIS:"Argentina"},
+            {IIDAUTOR:2, NOMBRECOMPLETO:"Gabriel Garcia Marquez", NOMBREPAIS:"Colombia"},
+            {IIDAUTOR:3, NOMBRECOMPLETO:"Miguel de Servantes Saavedra", NOMBREPAIS:"España"},
+            {IIDAUTOR:4, NOMBRECOMPLETO:"Mario Vargas Llosa", NOMBREPAIS:"Peru"},
+            {IIDAUTOR:5, NOMBRECOMPLETO:"Cristina Rivera Garza", NOMBREPAIS:"Mexico"}
         ]
     );
     const [listaPais, setlistaPais] = useState(
         [
-            {IIDPAIS:1,NOMBREPAIS:"Argentina"},
-            {IIDPAIS:2,NOMBREPAIS:"Colombia"},
-            {IIDPAIS:3,NOMBREPAIS:"España"},
-            {IIDPAIS:4,NOMBREPAIS:"Peru"},
-            {IIDPAIS:5,NOMBREPAIS:"Mexico"}
+            {IIDPAIS:1, NOMBREPAIS:"Argentina"},
+            {IIDPAIS:2, NOMBREPAIS:"Colombia"},
+            {IIDPAIS:3, NOMBREPAIS:"España"},
+            {IIDPAIS:4, NOMBREPAIS:"Peru"},
+            {IIDPAIS:5, NOMBREPAIS:"Mexico"}
+        ]
+    );
+    const [listaSexo, setlistaSexo] = useState(
+        [
+            {IIDSEXO:1, NOMBRESEXO:"Masculino"},
+            {IIDSEXO:2, NOMBRESEXO:"Femenino"}
         ]
     );
     const [filtroautor, setfiltroautor] = useState([]);
     const [nombreBusqueda, setnombreBusqueda] = useState("");
     const [visibleModal, setvisibleModal] = useState(false);
     const [tituloPopup, settituloPopup] = useState("");
-    const [iidPais, setiidPais] = useState("");
-
+    const [iidPais, setiidPais] = useState(5);
+    const [iidSexo, setiidSexo] = useState(1);
+    
     useEffect(()=>{
         setfiltroautor(listaautor)
     },[])
@@ -81,13 +88,23 @@ const AutorPage=()=>{
                 
                 <Input text="Apellido Materno" />
                 
-                <Picker 
+                <Picker
+                    text="Seleccione pais" 
                     data = {listaPais} 
                     value = {iidPais}
                     onChangeText = {(value)=>setiidPais(value)}
                     propiedadID = "IIDPAIS"
                     propiedadMostrar = "NOMBREPAIS"
-                    text="Seleccione pais" />
+                />
+
+                <Picker 
+                    text="Selecciona sexo"
+                    data={listaSexo}
+                    value={iidSexo}
+                    onChangeText={(value)=>setiidSexo(value)}
+                    propiedadID="IIDSEXO"
+                    propiedadMostrar="NOMBRESEXO"
+                />
             </ModalPopup>
 
             <Titulo title="Autor" />
